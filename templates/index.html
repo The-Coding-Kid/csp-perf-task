@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Todo App</title>
+    {% block head %}
+    <title>{% block title %}{% endblock %}Todo App</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles/index.css') }}"
     />
+    {% endblock %}
   </head>
   <body>
     <div class="header">
       <h1>Todo Manager Website</h1>
+    </div>
+    <div class="todos">
+      <form action="/add-todo" , method="POST">
+        <p>Add a todo: <input type="text" name="todo" /></p>
+        <input type="submit" value="Submit" />
+      </form>
     </div>
   </body>
 </html>
