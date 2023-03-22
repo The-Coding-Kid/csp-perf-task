@@ -5,15 +5,10 @@ app = Flask(__name__)
 
 todolist = ["hello world", "world", "hello"]
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home_route():
-    return render_template('index.html', todos=todolist)
-
-
-@app.route('/add-todo', methods=['POST'])
-def add_todo_route():
-    if(request.method != 'POST'):
-        return Response("Method not allowed", status=405)
+    if(request.method == 'GET'):
+        return render_template('index.html', todos=todolist)
     else:
         text = request.form['todo']
         todolist.append(text)

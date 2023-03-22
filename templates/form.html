@@ -1,0 +1,7 @@
+{% extends "index.html" %} 
+{% block content %}
+<form action="/add-todo" , method="POST">
+  <p>Add a todo: <input type="text" name="todo" /></p>
+  <input type="submit" value="Submit" />
+</form>
+{% endblock %}
