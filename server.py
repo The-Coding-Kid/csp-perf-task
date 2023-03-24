@@ -12,8 +12,8 @@ def home_route():
     else:
         text = request.form['todo']
         todolist.append(text)
-        
-        
+        return render_template('index.html', todos=todolist)
+               
 @app.route('/todos', methods=['GET'])
 def get_todos():
     if(request.method != 'GET'):
