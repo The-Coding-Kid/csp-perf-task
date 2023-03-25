@@ -30,11 +30,14 @@ def home_route():
     if(request.method == 'GET'):
         return render_template('index.html', todos=Todo.query.all())
     else:
-        text = request.form['todo']
-        todo = Todo(todo=text)
-        db.session.add(todo)
-        db.session.commit()
-        return render_template('index.html', todos=Todo.query.all())
+        if(request.form.get('add todo')):
+            text = request.form['todo']
+            todo = Todo(todo=text)
+            db.session.add(todo)
+            db.session.commit()
+            return render_template('index.html', todos=Todo.query.all())
+        elif(request.form.get('complete')):
+            id = request.form.get('id')
                
 @app.route('/todos', methods=['GET'])
 def get_todos():

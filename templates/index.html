@@ -14,12 +14,15 @@
       <h1>Todo Manager Website</h1>
     </div>
     <div class="todos">
-      <form action="/" , method="POST">
+      <form action="/" method="POST">
         <p>Add a todo: <input type="text" name="todo" /></p>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" name="add todo" />
       </form>
       {% for todo in todos %}
-      <p>{{ todo.todo }}</p>
+      <form action="/" method="POST">
+        <p>{{ todo.todo }}</p>
+        <input type="submit" value="complete" name="complete" />
+      </form>
       {% endfor %}
     </div>
   </body>

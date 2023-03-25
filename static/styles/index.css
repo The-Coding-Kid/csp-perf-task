@@ -9,3 +9,10 @@ body {
   transform: translate(-50%, 0%);
   text-align: center;
 }
+
+.todos {
+  margin-left: 50%;
+  top: 100px;
+  transform: translate(-50%, 0%);
+  text-align: center;
+}
