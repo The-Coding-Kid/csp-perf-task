@@ -19,10 +19,7 @@
         <input type="submit" value="Submit" name="add todo" />
       </form>
       {% for todo in todos %}
-      <form action="/" method="POST">
-        <p>{{ todo.todo }}</p>
-        <input type="submit" value="complete" name="complete" />
-      </form>
+      <p>{{ todo.todo }}</p>
       {% endfor %}
     </div>
   </body>

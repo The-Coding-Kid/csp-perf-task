@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response, jsonify
+from flask import Flask, render_template, request, Response, jsonify, redirect, url_for
 import json
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -37,7 +37,9 @@ def home_route():
             db.session.commit()
             return render_template('index.html', todos=Todo.query.all())
         elif(request.form.get('complete')):
-            id = request.form.get('id')
+            task = request.form.get('id')
+            print(task)
+            return render_template('index.html', todos=Todo.query.all())
                
 @app.route('/todos', methods=['GET'])
 def get_todos():
@@ -46,6 +48,20 @@ def get_todos():
         todos = Todo.query.all()
         return todos
 
+@app.route("/update/<int:todo_id>")
+def update(todo_id):
+    todo = Todo.query.filter_by(id=todo_id).first()
+    todo.completed = not todo.completed
+    db.session.commit()
+    return redirect(url_for("home_route"))
+
+
+@app.route('/delete/<int:todo_id>', methods=['GET', 'POST'])
+def delete_route(todo_id):
+    todo_to_delete = Todo.query.filter_by(id=todo_id).first()
+    db.session.delete(todo_to_delete)
+    db._session.commit()
+    return redirect(url_for('home_route'))
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5001)
