@@ -60,7 +60,7 @@ def update(todo_id):
 def delete_route(todo_id):
     todo_to_delete = Todo.query.filter_by(id=todo_id).first()
     db.session.delete(todo_to_delete)
-    db._session.commit()
+    db.session.commit()
     return redirect(url_for('home_route'))
 
 if __name__ == '__main__':

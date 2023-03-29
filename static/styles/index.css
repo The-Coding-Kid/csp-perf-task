@@ -1,6 +1,8 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #cceeff;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 .header {
@@ -15,4 +17,58 @@ body {
   top: 100px;
   transform: translate(-50%, 0%);
   text-align: center;
+}
+
+.btn-update {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.btn-delete {
+  background-color: #bf2222; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.checkmark {
+  color: green;
+}
+
+.xmark {
+  color: red;
+}
+
+.textinput {
+  width: 250px;
+  height: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  background-color: white;
+}
+
+.submit-btn {
+  background-color: #136b25;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
 }

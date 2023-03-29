@@ -2,6 +2,12 @@
 <html>
   <head>
     {% block head %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap"
+      rel="stylesheet"
+    />
     <title>{% block title %}{% endblock %}Todo App</title>
     <link
       rel="stylesheet"
@@ -15,11 +21,25 @@
     </div>
     <div class="todos">
       <form action="/" method="POST">
-        <p>Add a todo: <input type="text" name="todo" /></p>
-        <input type="submit" value="Submit" name="add todo" />
+        <p>Add a todo: <input class="textinput" type="text" name="todo" /></p>
+        <input
+          class="submit-btn"
+          type="submit"
+          value="Submit"
+          name="add todo"
+        />
       </form>
       {% for todo in todos %}
-      <p>{{ todo.todo }}</p>
+      <span>
+        <p>{{ todo.todo }}</p>
+        {% if todo.completed %}
+        <span class="checkmark">&#10003;</span>
+        {% else %}
+        <span class="xmark">&#10005;</span>
+        {% endif %}
+      </span>
+      <a class="btn-update" href="/update/{{todo.id}}">Change Status</a>
+      <a class="btn-delete" href="/delete/{{todo.id}}">Delete</a>
       {% endfor %}
     </div>
   </body>
