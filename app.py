@@ -19,7 +19,7 @@ class Todo(db.Model):
     
     def __repr__(self):
         return f"id: {self.id}, todo: {self.todo}, completed: {self.completed}"
-# todolist = ["hello world", "world", "hello"]
+
 
 @app.before_first_request
 def create_database():
@@ -48,7 +48,7 @@ def get_todos():
         todos = Todo.query.all()
         return todos
 
-@app.route("/update/<int:todo_id>")
+@app.route("/update/<int:todo_id>", methods=['GET', 'POST'])
 def update(todo_id):
     todo = Todo.query.filter_by(id=todo_id).first()
     todo.completed = not todo.completed
