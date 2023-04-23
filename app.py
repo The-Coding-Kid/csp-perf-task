@@ -50,17 +50,23 @@ def get_todos():
 
 @app.route("/update/<int:todo_id>", methods=['GET', 'POST'])
 def update(todo_id):
-    todo = Todo.query.filter_by(id=todo_id).first()
-    todo.completed = not todo.completed
-    db.session.commit()
+    todos = Todo.query.all()
+    for todo in todos:
+        if(todo.id == todo_id):
+            todo.completed = not todo.completed
+            db.session.commit()
+            break
     return redirect(url_for("home_route"))
 
 
 @app.route('/delete/<int:todo_id>', methods=['GET', 'POST'])
 def delete_route(todo_id):
-    todo_to_delete = Todo.query.filter_by(id=todo_id).first()
-    db.session.delete(todo_to_delete)
-    db.session.commit()
+    todos = Todo.query.all()
+    for todo in todos:
+        if(todo.id == todo_id):
+            db.session.delete(todo)
+            db.session.commit()
+            break
     return redirect(url_for('home_route'))
 
 if __name__ == '__main__':
