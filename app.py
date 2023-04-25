@@ -1,5 +1,13 @@
+# Python packages not part of the Python interpreter being used: Flask and FLask-SQLAlchemy
+# Database(data abstraction) being used: SQLite3
+# citations:
+# Flask(source code): https://github.com/pallets/flask/
+# Flask(documentation): https://flask.palletsprojects.com/en/2.2.x/
+# Flask-SQLAlchemy(source code): https://github.com/pallets-eco/flask-sqlalchemy/
+# Flask-SQLAlchemy(documentation): https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/
+# SQLite3(homepage): https://sqlite.org/index.html
+# SQLite3(documentation): https://www.sqlite.org/docs.html
 from flask import Flask, render_template, request, Response, jsonify, redirect, url_for
-import json
 from flask_sqlalchemy import SQLAlchemy
 import os
 
