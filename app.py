@@ -56,22 +56,26 @@ def get_todos():
         todos = Todo.query.all()
         return todos
 
-@app.route("/change/<int:todo_id>/<int:task>", methods=['GET', 'POST'])
-def change(todo_id, task):
+@app.route("/change/<int:todo_id>", methods=['GET', 'POST'])
+def update(todo_id):
     todos = Todo.query.all()
-    if(task == 0):
-        for todo in todos:
-            if(todo.id == todo_id):
-                todo.completed = not todo.completed
-                db.session.commit()
-                break
-    else:
-        for todo in todos:
-            if(todo.id == todo_id):
-                db.session.delete(todo)
-                db.session.commit()
-                break   
+    for todo in todos:
+        if(todo.id == todo_id):
+            todo.completed = not todo.completed
+            db.session.commit()
+            break
     return redirect(url_for("home_route"))
+
+
+@app.route('/delete/<int:todo_id>', methods=['GET', 'POST'])
+def delete_route(todo_id):
+    todos = Todo.query.all()
+    for todo in todos:
+        if(todo.id == todo_id):
+            db.session.delete(todo)
+            db.session.commit()
+            break
+    return redirect(url_for('home_route'))
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5001)
