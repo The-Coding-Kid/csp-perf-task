@@ -56,7 +56,7 @@ def get_todos():
         todos = Todo.query.all()
         return todos
 
-@app.route("/change/<int:todo_id>", methods=['GET', 'POST'])
+@app.route("/update/<int:todo_id>", methods=['GET', 'POST'])
 def update(todo_id):
     todos = Todo.query.all()
     for todo in todos:
