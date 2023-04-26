@@ -57,7 +57,7 @@ def get_todos():
         return todos
 
 @app.route("/change/<int:todo_id>/<int:task>", methods=['GET', 'POST'])
-def update(todo_id, task):
+def change(todo_id, task):
     todos = Todo.query.all()
     if(task == 0):
         for todo in todos:
